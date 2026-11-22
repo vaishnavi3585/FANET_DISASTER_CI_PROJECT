@@ -1,0 +1,49 @@
+FANET Disaster Dataset - Comprehensive Dataset Understanding
+=================================================================
+Total Records: 5,000
+Total Columns: 22
+Duplicate Rows: 0
+Total Missing Values across all columns: 0
+
+Note on Attack_Type column:
+  In the raw CSV, 'None' represents benign / unattacked traffic (988 records, ~19.8%).
+  The 5 attack categories in the dataset are: Blackhole (1037), Jamming (1018),
+  Replay (1016), None (988), and Sybil (941), totaling exactly 5,000 samples.
+
+Column Overview:
+               Column Data_Type  Non_Null_Count  Missing_Count  Missing_Percent  Unique_Values
+               UAV_ID     int64            5000              0              0.0             99
+                 Role       str            5000              0              0.0              3
+                    X   float64            5000              0              0.0           5000
+                    Y   float64            5000              0              0.0           5000
+                    Z   float64            5000              0              0.0           5000
+             Velocity   float64            5000              0              0.0           5000
+            Direction   float64            5000              0              0.0           5000
+         Energy_Level   float64            5000              0              0.0           5000
+       Neighbor_Count     int64            5000              0              0.0             14
+       Link_Stability   float64            5000              0              0.0           5000
+ Topology_Change_Rate   float64            5000              0              0.0           5000
+              Latency   float64            5000              0              0.0           5000
+           Throughput   float64            5000              0              0.0           5000
+Packet_Delivery_Ratio   float64            5000              0              0.0           5000
+      Signal_Strength   float64            5000              0              0.0           5000
+        Disaster_Type       str            5000              0              0.0              4
+     Obstacle_Density   float64            5000              0              0.0           5000
+    Weather_Condition       str            5000              0              0.0              4
+          Attack_Type       str            5000              0              0.0              5
+        Recovery_Time   float64            5000              0              0.0           5000
+   Route_Change_Count     int64            5000              0              0.0             20
+       Network_Status       str            5000              0              0.0              3
+
+Numerical Feature Descriptive Statistics:
+            UAV_ID            X            Y            Z     Velocity    Direction  Energy_Level  Neighbor_Count  Link_Stability  Topology_Change_Rate      Latency   Throughput  Packet_Delivery_Ratio  Signal_Strength  Obstacle_Density  Recovery_Time  Route_Change_Count
+count  5000.000000  5000.000000  5000.000000  5000.000000  5000.000000  5000.000000   5000.000000     5000.000000     5000.000000           5000.000000  5000.000000  5000.000000            5000.000000      5000.000000       5000.000000    5000.000000         5000.000000
+mean     49.398200   500.751170   501.933341   173.868818    17.570787   182.518053     54.416820        7.526000        0.648078              0.546745   155.664923    50.951785               0.748975       -67.409562          0.549938      24.984187            9.683600
+std      28.677471   287.555057   286.677425    72.443035     7.223918   103.250292     26.024749        4.029463        0.203389              0.260964    83.343062    28.458611               0.144573        15.789542          0.259092      14.330687            5.763066
+min       1.000000     0.185195     0.118645    50.002324     5.005035     0.007386     10.009214        1.000000        0.300012              0.100094    10.112350     1.000835               0.500135       -94.959371          0.100117       0.043023            0.000000
+25%      25.000000   259.995665   255.845246   110.363980    11.374398    95.012152     31.933907        4.000000        0.472151              0.315583    84.335889    26.702201               0.625727       -81.062884          0.323985      12.636625            5.000000
+50%      49.000000   501.766596   502.943692   173.647367    17.535122   184.601914     54.356301        8.000000        0.643398              0.544638   157.570471    51.251668               0.744907       -66.933739          0.551746      25.069700           10.000000
+75%      74.000000   747.994518   744.324116   236.884450    23.822680   272.024518     76.959705       11.000000        0.827359              0.776854   226.365641    75.867579               0.875226       -53.637076          0.774349      37.287868           15.000000
+max      99.000000   999.751563   999.892667   299.923708    29.997277   359.990592     99.990972       14.000000        0.999981              0.999961   299.953977    99.994030               0.999845       -40.020961          0.999836      49.981429           19.000000
+
+Categorical Feature Value Counts:

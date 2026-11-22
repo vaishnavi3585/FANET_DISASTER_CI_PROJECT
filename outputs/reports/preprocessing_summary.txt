@@ -1,0 +1,20 @@
+FANET Disaster Preprocessing Summary
+=======================================================
+Original Records: 5000
+Processed Clean Records: 5000
+Target Column: Network_Status
+Identifier Column Excluded: ['UAV_ID']
+Numeric Input Features (16): ['X', 'Y', 'Z', 'Velocity', 'Direction', 'Energy_Level', 'Neighbor_Count', 'Link_Stability', 'Topology_Change_Rate', 'Latency', 'Throughput', 'Packet_Delivery_Ratio', 'Signal_Strength', 'Obstacle_Density', 'Recovery_Time', 'Route_Change_Count']
+Categorical Input Features (4): ['Role', 'Disaster_Type', 'Weather_Condition', 'Attack_Type']
+Numeric Pipeline: SimpleImputer(median) -> StandardScaler()
+Categorical Pipeline: SimpleImputer(most_frequent) -> OneHotEncoder(sparse_output=False)
+Train/Test Partition: 80% Train, 20% Test (Stratified by Target)
+Training Samples: 4000 (80%)
+Testing Samples: 1000 (20%)
+Total Encoded/Scaled Feature Count: 32
+
+Target Class Distribution Across Full Dataset:
+Network_Status  Count  Percentage
+      Critical   3037       60.74
+      Degraded   1493       29.86
+        Normal    470        9.40

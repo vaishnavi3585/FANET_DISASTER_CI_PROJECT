@@ -1,0 +1,100 @@
+FANET Disaster Dataset - Multi-Model Benchmark & Evaluation Report
+========================================================================
+
+COMPARATIVE SUMMARY TABLE:
+              Model  Accuracy  Macro_F1  Weighted_F1  Critical_Recall  Critical_Precision  Critical_ROC_AUC  Macro_ROC_AUC
+      Random Forest     0.999  0.997661     0.998998         1.000000            1.000000          1.000000       0.999988
+      Decision Tree     0.999  0.997661     0.998998         1.000000            1.000000          1.000000       0.997989
+                SVM     0.878  0.846355     0.880641         0.894563            0.964476          0.981103       0.972742
+Logistic Regression     0.795  0.779624     0.799871         0.808896            0.912639          0.939887       0.937227
+
+========================================================================
+
+Model: Random Forest
+--------------------------------------------------
+Accuracy: 0.9990 | Macro F1: 0.9977 | Macro ROC-AUC: 1.0000
+Critical Recall: 1.0000 | Critical Precision: 1.0000
+
+Classification Report:
+              precision    recall  f1-score   support
+
+    Critical     1.0000    1.0000    1.0000       607
+    Degraded     0.9967    1.0000    0.9983       299
+      Normal     1.0000    0.9894    0.9947        94
+
+    accuracy                         0.9990      1000
+   macro avg     0.9989    0.9965    0.9977      1000
+weighted avg     0.9990    0.9990    0.9990      1000
+
+Confusion Matrix (labels=['Critical', 'Degraded', 'Normal']):
+[[607   0   0]
+ [  0 299   0]
+ [  0   1  93]]
+
+============================================================
+Model: Decision Tree
+--------------------------------------------------
+Accuracy: 0.9990 | Macro F1: 0.9977 | Macro ROC-AUC: 0.9980
+Critical Recall: 1.0000 | Critical Precision: 1.0000
+
+Classification Report:
+              precision    recall  f1-score   support
+
+    Critical     1.0000    1.0000    1.0000       607
+    Degraded     0.9967    1.0000    0.9983       299
+      Normal     1.0000    0.9894    0.9947        94
+
+    accuracy                         0.9990      1000
+   macro avg     0.9989    0.9965    0.9977      1000
+weighted avg     0.9990    0.9990    0.9990      1000
+
+Confusion Matrix (labels=['Critical', 'Degraded', 'Normal']):
+[[607   0   0]
+ [  0 299   0]
+ [  0   1  93]]
+
+============================================================
+Model: SVM
+--------------------------------------------------
+Accuracy: 0.8780 | Macro F1: 0.8464 | Macro ROC-AUC: 0.9727
+Critical Recall: 0.8946 | Critical Precision: 0.9645
+
+Classification Report:
+              precision    recall  f1-score   support
+
+    Critical     0.9645    0.8946    0.9282       607
+    Degraded     0.7611    0.8629    0.8088       299
+      Normal     0.7857    0.8191    0.8021        94
+
+    accuracy                         0.8780      1000
+   macro avg     0.8371    0.8589    0.8464      1000
+weighted avg     0.8869    0.8780    0.8806      1000
+
+Confusion Matrix (labels=['Critical', 'Degraded', 'Normal']):
+[[543  64   0]
+ [ 20 258  21]
+ [  0  17  77]]
+
+============================================================
+Model: Logistic Regression
+--------------------------------------------------
+Accuracy: 0.7950 | Macro F1: 0.7796 | Macro ROC-AUC: 0.9372
+Critical Recall: 0.8089 | Critical Precision: 0.9126
+
+Classification Report:
+              precision    recall  f1-score   support
+
+    Critical     0.9126    0.8089    0.8576       607
+    Degraded     0.6351    0.7391    0.6832       299
+      Normal     0.7281    0.8830    0.7981        94
+
+    accuracy                         0.7950      1000
+   macro avg     0.7586    0.8103    0.7796      1000
+weighted avg     0.8123    0.7950    0.7999      1000
+
+Confusion Matrix (labels=['Critical', 'Degraded', 'Normal']):
+[[491 116   0]
+ [ 47 221  31]
+ [  0  11  83]]
+
+============================================================

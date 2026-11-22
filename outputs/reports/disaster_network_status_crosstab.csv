@@ -1,0 +1,6 @@
+Disaster_Type,Critical,Degraded,Normal,All
+Cyclone,770,372,108,1250
+Earthquake,748,374,145,1267
+Flood,756,365,93,1214
+Wildfire,763,382,124,1269
+All,3037,1493,470,5000

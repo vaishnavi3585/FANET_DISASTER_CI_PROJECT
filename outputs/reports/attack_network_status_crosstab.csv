@@ -1,0 +1,7 @@
+Attack_Type,Critical,Degraded,Normal,All
+Blackhole,657,284,96,1037
+Jamming,594,326,98,1018
+None,601,300,87,988
+Replay,603,307,106,1016
+Sybil,582,276,83,941
+All,3037,1493,470,5000

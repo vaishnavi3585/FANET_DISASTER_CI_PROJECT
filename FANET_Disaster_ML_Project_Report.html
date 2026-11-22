@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FANET Disaster Network ML Project Report</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      background: #f8fafc;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 24px 30px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+      border: 1px solid #e2e8f0;
+    }
+    h1 { color: #0f172a; margin-top: 0; font-size: 26px; border-bottom: 2px solid #2563eb; padding-bottom: 12px; }
+    h2 { color: #1e3a8a; font-size: 19px; margin-top: 0; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+    h3 { color: #334155; font-size: 16px; margin-bottom: 8px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 10px 14px;
+      text-align: left;
+    }
+    th {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-weight: 600;
+    }
+    tr:nth-child(even) { background-color: #f8fafc; }
+    tr:hover { background-color: #f1f5f9; }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .badge-rf { background: #dbeafe; color: #1e40af; }
+    .badge-dt { background: #dcfce7; color: #166534; }
+    .badge-svm { background: #f3e8ff; color: #6b21a8; }
+    .badge-lr { background: #fee2e2; color: #991b1b; }
+    .highlight {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+    }
+    code {
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      font-size: 13px;
+      color: #0f172a;
+    }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 14px 18px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: Consolas, monospace;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>FANET Disaster Telemetry & Multi-Model ML Benchmark</h1>
+    <p><strong>Project:</strong> Real-time UAV Network Status Prediction (<code>Critical</code>, <code>Degraded</code>, <code>Normal</code>) in Disaster Environments</p>
+    <p><strong>Dataset:</strong> <code>FANET Disaster Dataset.csv</code> (5,000 records &times; 22 columns, 0 missing values)</p>
+  </div>
+
+  <div class="card">
+    <h2>1. Executive Summary & Models Tested</h2>
+    <p>In post-disaster search-and-rescue missions, ground towers collapse, requiring <strong>Flying Ad-Hoc Networks (FANETs)</strong> of UAVs to maintain life-saving communications. This project evaluates four machine learning architectures on an identical 80/20 stratified holdout test split (N = 1,000):</p>
+    <ul>
+      <li><span class="badge badge-rf">Random Forest</span>: <strong>Bagging Ensemble</strong> of 100 deep trees trained on bootstrap samples.</li>
+      <li><span class="badge badge-dt">Decision Tree</span>: <strong>Single Tree</strong> baseline optimized via Gini split criteria.</li>
+      <li><span class="badge badge-svm">SVM (RBF Kernel)</span>: <strong>Non-linear Maximum Margin</strong> kernelized classification.</li>
+      <li><span class="badge badge-lr">Logistic Regression</span>: <strong>Linear Baseline</strong> with balanced class weights.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>2. Complete Benchmark Evaluation Table (Test Set, N = 1,000)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Random Forest (Bagging)</th>
+          <th>Decision Tree</th>
+          <th>SVM (RBF Kernel)</th>
+          <th>Logistic Regression</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Overall Accuracy</strong></td>
+          <td><strong style="color:#16a34a;">99.90%</strong></td>
+          <td><strong style="color:#16a34a;">99.90%</strong></td>
+          <td>87.80%</td>
+          <td>79.50%</td>
+        </tr>
+        <tr>
+          <td><strong>Macro F1-Score</strong></td>
+          <td><strong>0.9977</strong></td>
+          <td><strong>0.9977</strong></td>
+          <td>0.8464</td>
+          <td>0.7796</td>
+        </tr>
+        <tr>
+          <td><strong>Weighted F1-Score</strong></td>
+          <td><strong>0.9990</strong></td>
+          <td><strong>0.9990</strong></td>
+          <td>0.8806</td>
+          <td>0.7999</td>
+        </tr>
+        <tr>
+          <td><strong>Macro ROC-AUC (OvR)</strong></td>
+          <td><strong>1.0000</strong></td>
+          <td>0.9980</td>
+          <td>0.9727</td>
+          <td>0.9372</td>
+        </tr>
+        <tr>
+          <td><strong>Critical Class Recall</strong></td>
+          <td><strong style="color:#16a34a;">100.0%</strong> (607/607)</td>
+          <td><strong style="color:#16a34a;">100.0%</strong> (607/607)</td>
+          <td>89.46% (543/607)</td>
+          <td>80.89% (491/607)</td>
+        </tr>
+        <tr>
+          <td><strong>Critical Class Precision</strong></td>
+          <td><strong>100.0%</strong> (607/607)</td>
+          <td><strong>100.0%</strong> (607/607)</td>
+          <td>96.45% (543/563)</td>
+          <td>91.26% (491/538)</td>
+        </tr>
+        <tr>
+          <td><strong>Critical Class F1</strong></td>
+          <td><strong>1.0000</strong></td>
+          <td><strong>1.0000</strong></td>
+          <td>0.9282</td>
+          <td>0.8576</td>
+        </tr>
+        <tr>
+          <td><strong>Critical Class ROC-AUC</strong></td>
+          <td><strong>1.0000</strong></td>
+          <td>1.0000</td>
+          <td>0.9811</td>
+          <td>0.9399</td>
+        </tr>
+        <tr>
+          <td><strong>Degraded Class Recall</strong></td>
+          <td><strong>100.0%</strong> (299/299)</td>
+          <td><strong>100.0%</strong> (299/299)</td>
+          <td>86.29% (258/299)</td>
+          <td>73.91% (221/299)</td>
+        </tr>
+        <tr>
+          <td><strong>Degraded Class Precision</strong></td>
+          <td><strong>99.67%</strong> (299/300)</td>
+          <td><strong>99.67%</strong> (299/300)</td>
+          <td>76.11% (258/339)</td>
+          <td>63.51% (221/348)</td>
+        </tr>
+        <tr>
+          <td><strong>Normal Class Recall</strong></td>
+          <td><strong>98.94%</strong> (93/94)</td>
+          <td><strong>98.94%</strong> (93/94)</td>
+          <td>81.91% (77/94)</td>
+          <td>88.30% (83/94)</td>
+        </tr>
+        <tr>
+          <td><strong>Normal Class Precision</strong></td>
+          <td><strong>100.0%</strong> (93/93)</td>
+          <td><strong>100.0%</strong> (93/93)</td>
+          <td>78.57% (77/98)</td>
+          <td>72.81% (83/114)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>3. Key Technical Takeaways for Group Members</h2>
+    <div class="highlight">
+      <strong>Zero Outages Missed (100% Critical Recall):</strong> Tree models (Random Forest & Decision Tree) achieved 100.0% recall on the <code>Critical</code> outage class (0 false negatives out of 607 nodes). In emergency operations, failing to detect a critical outage means an aerial node disconnects without rerouting, jeopardizing rescue communication.
+    </div>
+    <div class="highlight">
+      <strong>Why Tree-Based Models Outperform SVM & Logistic Regression:</strong> Network telemetry transitions operate under physical thresholds (e.g., Latency &gt; 200 ms, Packet Delivery Ratio &lt; 0.65). Decision trees naturally identify these step-function boundaries, whereas linear models struggle to partition non-linear multi-class operational regimes.
+    </div>
+    <p><strong>Top 4 Most Predictive Features:</strong></p>
+    <ol>
+      <li><code>Latency</code> (Primary discriminator)</li>
+      <li><code>Packet_Delivery_Ratio</code></li>
+      <li><code>Throughput</code></li>
+      <li><code>Link_Stability</code></li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>4. How to Run the Project (Step-by-Step)</h2>
+    <p>All group members can easily reproduce and run this project:</p>
+    <pre># 1. Install required packages
+python -m pip install -r requirements.txt
+
+# 2. Execute full training, evaluation & plot generation
+python main.py</pre>
+    <p><strong>Output Folders:</strong></p>
+    <ul>
+      <li><code>outputs/plots/</code>: High-resolution PNG charts (Confusion matrices, ROC curves, Boxplots, Feature importances).</li>
+      <li><code>outputs/reports/</code>: Summary text files and CSV metric reports.</li>
+      <li><code>outputs/processed/</code>: Cleaned dataset, preprocessed train/test CSVs.</li>
+    </ul>
+  </div>
+
+</body>
+</html>
+
